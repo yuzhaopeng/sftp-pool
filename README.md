@@ -10,7 +10,7 @@ public class SftpConfig {
     public ConnectionProvider getProvider(){
         GenericObjectPoolConfig config = new GenericObjectPoolConfig();
         config.setMaxTotal(3);
-        ConnectionProvider connectionProvider = new ConnectionProvider("52.83.137.110", 10022, "ftp", "hebaoyuleFTP",config);
+        ConnectionProvider connectionProvider = new ConnectionProvider("host", port, "username", "password",config);
         return  connectionProvider;
     }
 }
