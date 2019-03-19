@@ -1,5 +1,15 @@
 # sftp-pool
 基于Jsch和apache common-pool实现的sftp连接池
+## 引入依赖
+```shell
+# 下载代码
+git clone https://github.com/yuzhaopeng/sftp-pool.git
+# 进入目录打包
+cd sftp-pool/
+mvn install 
+
+```
+
 ## 配置
 添加以下配置即可
 ```java
