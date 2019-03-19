@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/sftp-pool.iml" filepath="$PROJECT_DIR$/.idea/sftp-pool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sftppool/sftp-pool.iml" filepath="$PROJECT_DIR$/sftppool/sftp-pool.iml" />
     </modules>
   </component>
 </project>

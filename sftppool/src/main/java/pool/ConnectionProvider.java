@@ -1,6 +1,7 @@
 package pool;
 
 import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelSftp;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
@@ -39,8 +40,8 @@ public class ConnectionProvider {
     }
 
 
-    public Channel  getConnection() throws Exception{
-        return pool.borrowObject();
+    public ChannelSftp  getConnection() throws Exception{
+        return (ChannelSftp)pool.borrowObject();
     }
 
     public void returnObject(Channel obj){

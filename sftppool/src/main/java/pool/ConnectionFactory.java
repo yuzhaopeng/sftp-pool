@@ -1,6 +1,8 @@
 package pool;
 
 import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelSftp;
+import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.PooledObjectFactory;
@@ -40,6 +42,8 @@ public class ConnectionFactory implements PooledObjectFactory<Channel>  {
     @Override
     public void destroyObject(PooledObject<Channel> pooledObject) throws Exception {
         Channel channel = pooledObject.getObject();
+        Session session = channel.getSession();
+        session.disconnect();
         channel.disconnect();
 
     }
@@ -56,7 +60,18 @@ public class ConnectionFactory implements PooledObjectFactory<Channel>  {
      */
     @Override
     public void activateObject(PooledObject<Channel> pooledObject) throws Exception {
-            //pooledObject.getObject().connect();
+
+        ChannelSftp sftp = (ChannelSftp) pooledObject.getObject();
+        sftp.cd("/");
+        if(!sftp.isConnected()){
+            try {
+                sftp.connect();
+            }catch (JSchException e) {
+                Session session = sftp.getSession();
+                session.connect();
+                sftp.connect();
+            }
+        }
     }
 
     /**
@@ -68,6 +83,7 @@ public class ConnectionFactory implements PooledObjectFactory<Channel>  {
     public void passivateObject(PooledObject<Channel> pooledObject) throws Exception {
         Channel sftp = pooledObject.getObject();
         Session session = sftp.getSession();
+
 
     }
 

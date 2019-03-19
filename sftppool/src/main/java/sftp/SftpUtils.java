@@ -1,7 +1,6 @@
 package sftp;
 
 import com.jcraft.jsch.*;
-import org.springframework.stereotype.Component;
 
 import java.util.Properties;
 
@@ -11,7 +10,7 @@ import java.util.Properties;
  * @Email： yu.zhaopeng@foxmail.com
  * @Version 1.0
  */
-@Component
+
 public class SftpUtils {
 
     private String ip;
